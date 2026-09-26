@@ -7,7 +7,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
+  site: 'https://charlizeportofolio.netlify.app',
   output: 'static'
-  // When the portfolio has a real domain, add: site: 'https://your-domain.tld'
-  // (it enables canonical URLs and absolute Open Graph image URLs).
 });
