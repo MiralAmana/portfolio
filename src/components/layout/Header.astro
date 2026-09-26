@@ -11,11 +11,9 @@ const other: Lang = lang === 'fr' ? 'en' : 'fr';
 const switchHref = altPath(Astro.url.pathname, other);
 
 const navLinks = [
-  { href: `${base}#mind`, label: s.nav.mind },
-  { href: `${base}#learning`, label: s.nav.learning },
   { href: `${base}#building`, label: s.nav.building },
+  { href: `${base}#mind`, label: s.nav.mind },
   { href: `${base}#lab`, label: s.nav.lab },
-  { href: `${base}#thoughts`, label: s.nav.thoughts },
   { href: `${base}#about`, label: s.nav.about },
   { href: `${base}#contact`, label: s.nav.contact }
 ];

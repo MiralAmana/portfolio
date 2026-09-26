@@ -21,22 +21,22 @@ const en = {
   meta: {
     title: 'Charlize — AI, Data, Software, Mathematics',
     description:
-      "I don't just want to build things. I want to understand how they work. A portfolio documenting a progression through mathematics, AI, data and software."
+      "I design and build software, data and AI solutions, from the problem to the working product. Portfolio of Charlize: web apps, desktop apps and AI-assisted tools."
   },
   common: { skip: 'Skip to content', close: 'Close', toggleNav: 'Toggle navigation', primary: 'Primary', mobile: 'Mobile', language: 'Language' },
-  nav: { mind: 'Mind', learning: 'Learning', building: 'Building', lab: 'Lab', thoughts: 'Thoughts', about: 'About', contact: 'Contact' },
+  nav: { mind: 'Expertise', learning: 'Learning', building: 'Work', lab: 'Lab', thoughts: 'Thoughts', about: 'About', contact: 'Contact' },
   hero: {
     tagline: ['AI', 'DATA', 'SOFTWARE', 'MATHEMATICS'],
-    quote1: "I don't just want to build things.",
-    quote2: ' I want to understand how they work.',
-    cta: 'Enter my mind',
+    quote1: 'I build software, data and AI solutions.',
+    quote2: ' From the problem to the working product.',
+    cta: 'See my work',
     scroll: 'Scroll',
     photoAlt: 'Portrait of Charlize'
   },
   mind: {
-    eyebrow: 'My Mind',
-    title: "A map of what I know, and what I'm reaching for.",
-    intro: 'Not a skills list. A constellation: each point is something I\'m trying to understand from the ground up.',
+    eyebrow: 'Expertise',
+    title: 'The foundations behind what I build.',
+    intro: 'Mathematics, computer science, AI and data: an interactive map of the areas my solutions rest on.',
     center: 'MIND',
     svgLabel: 'Knowledge constellation. Select a category, then a topic.',
     category: 'Category',
@@ -56,9 +56,9 @@ const en = {
     srNext: ' — up next'
   },
   building: {
-    eyebrow: "Things I'm building",
-    title: 'What I make while I learn.',
-    intro: 'Real projects, each one a way to test what I understand against a real problem.',
+    eyebrow: 'Selected work',
+    title: 'Solutions I have built.',
+    intro: 'Real problems, real users: a web platform, a desktop app delivered to a client, and an online pharmacy.',
     view: 'View project',
     experiments: 'Experiments',
     experimentsText: 'Small prototypes live in the Lab.',
@@ -75,9 +75,8 @@ const en = {
   },
   lab: {
     eyebrow: 'Lab',
-    title: 'Where I learn by poking things.',
-    intro:
-      "Small experiments, built to understand an idea rather than to ship a product. This first one is about the exact topic I'm working through right now.",
+    title: 'Interactive experiments.',
+    intro: 'Small prototypes that make an idea tangible. This first one explores vectors, linear combinations and independence, the maths behind many data and AI tools.',
     experimentTitle: 'Vectors, combinations and independence',
     experimentNo: 'Experiment 01',
     shelfTitle: 'On the shelf',
@@ -107,14 +106,14 @@ const en = {
   about: {
     eyebrow: 'About',
     title: "Hi, I'm Charlize.",
-    facts: ['Master 1 · Data Science & AI', 'Licence · Software Engineering', 'Based in Senegal'],
+    facts: ['Data Science & AI · Master', 'Software Engineering · Licence', 'Based in Senegal'],
     paragraphs: [
-      "I'm building my knowledge of computer science, mathematics, data and AI one layer at a time, starting from the foundations instead of skipping to the tools.",
-      "Right now I'm consolidating linear algebra, so that when I go deeper into data and AI, I understand what the tools are actually doing.",
-      'This portfolio is where I keep track of that: what I understand, what I\'m learning, what I build, and what I try. It will keep changing as I do.'
+      'I build software, data and AI solutions: web platforms, desktop tools and AI-assisted applications, from understanding the problem to a working product.',
+      'I start from the real need, then choose the tools. That is why I care about the foundations, mathematics, data and AI, behind what I ship.',
+      'My work ranges from an AI-assisted assessment platform to an offline management app delivered to a client.'
     ]
   },
-  contact: { line1: "I'm still learning.", line2: "That's the point.", email: 'Email' },
+  contact: { line1: 'Have a problem to solve?', line2: "Let's build the solution.", email: 'Email' },
   footer: { tagline: 'AI · Data · Software · Mathematics' },
   notFound: { title: "This page doesn't exist", back: '← Back home' }
 };
@@ -123,22 +122,22 @@ const fr: typeof en = {
   meta: {
     title: 'Charlize — IA, Data, Logiciel, Mathématiques',
     description:
-      "Je ne veux pas seulement construire des choses. Je veux comprendre comment elles fonctionnent. Un portfolio qui documente une progression en mathématiques, IA, data et logiciel."
+      "Je conçois et construis des solutions logicielles, data et IA, du problème au produit fonctionnel. Portfolio de Charlize : applications web, applications de bureau et outils assistés par IA."
   },
   common: { skip: 'Aller au contenu', close: 'Fermer', toggleNav: 'Ouvrir ou fermer la navigation', primary: 'Principale', mobile: 'Mobile', language: 'Langue' },
-  nav: { mind: 'Esprit', learning: 'Apprentissage', building: 'Projets', lab: 'Lab', thoughts: 'Réflexions', about: 'À propos', contact: 'Contact' },
+  nav: { mind: 'Expertise', learning: 'Apprentissage', building: 'Réalisations', lab: 'Lab', thoughts: 'Réflexions', about: 'À propos', contact: 'Contact' },
   hero: {
     tagline: ['IA', 'DATA', 'LOGICIEL', 'MATHÉMATIQUES'],
-    quote1: 'Je ne veux pas seulement construire des choses.',
-    quote2: ' Je veux comprendre comment elles fonctionnent.',
-    cta: 'Entrer dans mon univers',
+    quote1: 'Je construis des solutions logicielles, data et IA.',
+    quote2: ' Du problème au produit fonctionnel.',
+    cta: 'Voir mes réalisations',
     scroll: 'Défiler',
     photoAlt: 'Portrait de Charlize'
   },
   mind: {
-    eyebrow: 'Mon esprit',
-    title: 'Une carte de ce que je sais, et de ce que je cherche à atteindre.',
-    intro: "Pas une liste de compétences. Une constellation : chaque point est quelque chose que j'essaie de comprendre depuis les bases.",
+    eyebrow: 'Expertise',
+    title: 'Les fondations derrière ce que je construis.',
+    intro: "Mathématiques, informatique, IA et data : une carte interactive des domaines sur lesquels reposent mes solutions.",
     center: 'ESPRIT',
     svgLabel: 'Constellation de connaissances. Sélectionnez une catégorie, puis un sujet.',
     category: 'Catégorie',
@@ -158,9 +157,9 @@ const fr: typeof en = {
     srNext: ' — à venir'
   },
   building: {
-    eyebrow: 'Ce que je construis',
-    title: 'Ce que je fabrique en apprenant.',
-    intro: 'De vrais projets : chacun est une façon de confronter ce que je comprends à un vrai problème.',
+    eyebrow: 'Réalisations',
+    title: "Des solutions que j'ai construites.",
+    intro: "De vrais problèmes, de vrais utilisateurs : une plateforme web, une application de bureau livrée à une cliente, et une pharmacie en ligne.",
     view: 'Voir le projet',
     experiments: 'Expériences',
     experimentsText: 'Les petits prototypes vivent dans le Lab.',
@@ -177,9 +176,8 @@ const fr: typeof en = {
   },
   lab: {
     eyebrow: 'Lab',
-    title: "Là où j'apprends en manipulant les choses.",
-    intro:
-      "De petites expériences, faites pour comprendre une idée plutôt que pour livrer un produit. Cette première porte sur le sujet exact que je travaille en ce moment.",
+    title: 'Expériences interactives.',
+    intro: "De petits prototypes qui rendent une idée tangible. Cette première explore les vecteurs, les combinaisons linéaires et l'indépendance, les mathématiques derrière de nombreux outils data et IA.",
     experimentTitle: 'Vecteurs, combinaisons et indépendance',
     experimentNo: 'Expérience 01',
     shelfTitle: "Sur l'étagère",
@@ -209,14 +207,14 @@ const fr: typeof en = {
   about: {
     eyebrow: 'À propos',
     title: 'Salut, je suis Charlize.',
-    facts: ['Master 1 · Data Science & IA', 'Licence · Génie Logiciel', 'Basée au Sénégal'],
+    facts: ['Data Science & IA · Master', 'Génie Logiciel · Licence', 'Basée au Sénégal'],
     paragraphs: [
-      "Je construis mes connaissances en informatique, mathématiques, data et IA couche après couche, en partant des fondations plutôt qu'en sautant directement aux outils.",
-      "En ce moment, je consolide l'algèbre linéaire, pour comprendre ce que font réellement les outils quand j'irai plus loin en data et en IA.",
-      "Ce portfolio me sert à garder la trace de tout ça : ce que je comprends, ce que j'apprends, ce que je construis et ce que j'essaie. Il changera en même temps que moi."
+      "Je construis des solutions logicielles, data et IA : plateformes web, outils de bureau et applications assistées par IA, de la compréhension du problème jusqu'au produit fonctionnel.",
+      "Je pars du besoin réel, puis je choisis les outils. C'est pourquoi je tiens aux fondations, mathématiques, data et IA, derrière ce que je livre.",
+      "Mon travail va d'une plateforme d'évaluation assistée par IA à une application de gestion hors-ligne livrée à une cliente."
     ]
   },
-  contact: { line1: "Je suis encore en train d'apprendre.", line2: "C'est tout l'intérêt.", email: 'E-mail' },
+  contact: { line1: 'Un problème à résoudre ?', line2: 'Construisons la solution.', email: 'E-mail' },
   footer: { tagline: 'IA · Data · Logiciel · Mathématiques' },
   notFound: { title: "Cette page n'existe pas", back: "← Retour à l'accueil" }
 };
