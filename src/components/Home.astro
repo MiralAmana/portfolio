@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from './sections/Hero.astro';
+import MyMind from './sections/MyMind.astro';
+import CurrentlyLearning from './sections/CurrentlyLearning.astro';
+import ThingsImBuilding from './sections/ThingsImBuilding.astro';
+import Lab from './sections/Lab.astro';
+import ThingsImThinkingAbout from './sections/ThingsImThinkingAbout.astro';
+import About from './sections/About.astro';
+import Contact from './sections/Contact.astro';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<BaseLayout lang={lang} autoRedirect={lang === 'en'}>
+  <Hero lang={lang} />
+  <MyMind lang={lang} />
+  <CurrentlyLearning lang={lang} />
+  <ThingsImBuilding lang={lang} />
+  <Lab lang={lang} />
+  <ThingsImThinkingAbout lang={lang} />
+  <About lang={lang} />
+  <Contact lang={lang} />
+</BaseLayout>

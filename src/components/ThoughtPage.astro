@@ -1,0 +1,33 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { homePath, loc, t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  entry: any;
+}
+const { lang, entry } = Astro.props;
+const s = t(lang).thoughts;
+const question = loc(entry.data, 'question', lang);
+const hasBody = !!entry.body?.trim();
+const { Content } = await render(entry);
+---
+
+<BaseLayout lang={lang} title={`${question} — Charlize`} description={question}>
+  <article class="px-6 sm:px-10 pt-40 pb-32 min-h-[80vh]">
+    <div class="max-w-3xl mx-auto">
+      <a href={`${homePath(lang)}#thoughts`} class="label-mono hover:text-ink transition-colors">{s.back}</a>
+      <h1 class="mt-10 font-display font-light text-4xl sm:text-6xl leading-[1.05] text-ink">{question}</h1>
+      {
+        hasBody ? (
+          <div class="mt-12 space-y-6 text-lg leading-relaxed text-ink/85">
+            <Content />
+          </div>
+        ) : (
+          <p class="mt-12 max-w-md text-muted leading-relaxed">{s.unwritten}</p>
+        )
+      }
+    </div>
+  </article>
+</BaseLayout>

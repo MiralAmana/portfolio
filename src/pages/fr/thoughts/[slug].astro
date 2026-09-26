@@ -1,0 +1,12 @@
+---
+import { getCollection } from 'astro:content';
+import ThoughtPage from '../../../components/ThoughtPage.astro';
+
+export async function getStaticPaths() {
+  const thoughts = await getCollection('thoughts');
+  return thoughts.map((t) => ({ params: { slug: t.id }, props: { entry: t } }));
+}
+const { entry } = Astro.props;
+---
+
+<ThoughtPage lang="fr" entry={entry} />

@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import SectionHeading from '../ui/SectionHeading.astro';
+import KnowledgeConstellation from '../../islands/KnowledgeConstellation.tsx';
+import { loc, t, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'en' } = Astro.props;
+const s = t(lang).mind;
+
+const knowledge = (await getCollection('knowledge')).sort((a, b) => a.data.order - b.data.order);
+const learning = await getCollection('learning');
+
+// Status comes from the "learning" collection (matched on the English name) so it is written in one place only.
+const statusByTopic = new Map<string, 'understood' | 'onmyway'>();
+learning.forEach((track) =>
+  track.data.items.forEach((item) =>
+    statusByTopic.set(item.name, item.done ? 'understood' : 'onmyway')
+  )
+);
+
+const categories = knowledge.map((entry) => ({
+  id: entry.id,
+  title: loc(entry.data, 'category', lang),
+  topics: entry.data.topics.map((tp) => ({
+    name: loc(tp, 'name', lang),
+    definition: loc(tp, 'definition', lang),
+    status: statusByTopic.get(tp.name)
+  }))
+}));
+
+const labels = {
+  center: s.center,
+  svgLabel: s.svgLabel,
+  category: s.category,
+  categorySuffix: s.categorySuffix,
+  understood: s.understood,
+  onmyway: s.onmyway,
+  selectTopic: s.selectTopic,
+  empty: s.empty
+};
+---
+
+<section id="mind" class="px-6 sm:px-10 py-28 lg:py-36" aria-labelledby="mind-title">
+  <div class="max-w-6xl mx-auto">
+    <SectionHeading id="mind-title" eyebrow={s.eyebrow} title={s.title} intro={s.intro} />
+
+    <div class="mt-14 reveal" style="--rd: 0.1s">
+      <KnowledgeConstellation client:visible categories={categories} initialCategory="mathematics" labels={labels} />
+    </div>
+  </div>
+</section>

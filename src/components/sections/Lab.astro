@@ -1,0 +1,39 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import VectorLab from '../../islands/VectorLab.tsx';
+import { t, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'en' } = Astro.props;
+const s = t(lang).lab;
+---
+
+<section id="lab" class="px-6 sm:px-10 py-28 lg:py-36 border-t border-line" aria-labelledby="lab-title">
+  <div class="max-w-6xl mx-auto">
+    <SectionHeading id="lab-title" eyebrow={s.eyebrow} title={s.title} intro={s.intro} />
+
+    <div class="mt-14 reveal" style="--rd: 0.1s">
+      <div class="mb-6 flex flex-wrap items-baseline justify-between gap-3">
+        <h3 class="font-display text-2xl font-light text-ink">{s.experimentTitle}</h3>
+        <p class="label-mono">{s.experimentNo}</p>
+      </div>
+      <VectorLab client:visible labels={s.vector} />
+    </div>
+
+    <div class="mt-16 reveal" style="--rd: 0.1s">
+      <p class="label-mono">{s.shelfTitle}</p>
+      <ul class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          s.shelf.map((item) => (
+            <li class="rounded-2xl border border-dashed border-line px-5 py-4 text-sm text-muted">
+              {item}
+              <span class="mt-2 block label-mono text-[10px]">{s.later}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+---
+import { t, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'en' } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-line px-6 sm:px-10 py-10">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <span class="label-mono">Charlize — {year}</span>
+    <span class="label-mono">{t(lang).footer.tagline}</span>
+  </div>
+</footer>

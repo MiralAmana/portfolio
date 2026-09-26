@@ -1,0 +1,170 @@
+---
+import { altPath, homePath, t, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'en' } = Astro.props;
+const s = t(lang);
+const base = homePath(lang);
+const other: Lang = lang === 'fr' ? 'en' : 'fr';
+const switchHref = altPath(Astro.url.pathname, other);
+
+const navLinks = [
+  { href: `${base}#mind`, label: s.nav.mind },
+  { href: `${base}#learning`, label: s.nav.learning },
+  { href: `${base}#building`, label: s.nav.building },
+  { href: `${base}#lab`, label: s.nav.lab },
+  { href: `${base}#thoughts`, label: s.nav.thoughts },
+  { href: `${base}#about`, label: s.nav.about },
+  { href: `${base}#contact`, label: s.nav.contact }
+];
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 left-0 w-full z-50 transition-colors duration-300 px-6 sm:px-10 py-6"
+>
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <a href={`${base}#hero`} class="font-display text-lg text-ink tracking-tight">
+      C<span class="text-accent">.</span>
+    </a>
+
+    <nav aria-label={s.common.primary} class="hidden md:flex items-center gap-8">
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class="label-mono hover:text-ink transition-colors duration-200">
+            {link.label}
+          </a>
+        ))
+      }
+      <span class="h-4 w-px bg-line" aria-hidden="true"></span>
+      <div class="flex items-center gap-2 label-mono" role="group" aria-label={s.common.language}>
+        <span aria-current="true" class="text-ink" lang={lang}>{lang.toUpperCase()}</span>
+        <span aria-hidden="true">/</span>
+        <a
+          href={switchHref}
+          hreflang={other}
+          lang={other}
+          data-lang-switch={other}
+          aria-label={other === 'fr' ? 'Français' : 'English'}
+          class="hover:text-ink transition-colors duration-200"
+        >
+          {other.toUpperCase()}
+        </a>
+      </div>
+    </nav>
+
+    <button
+      id="mobile-nav-toggle"
+      aria-label={s.common.toggleNav}
+      aria-expanded="false"
+      class="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 text-ink"
+    >
+      <span class="w-6 h-px bg-ink transition-all duration-300" data-bar="top"></span>
+      <span class="w-6 h-px bg-ink transition-all duration-300" data-bar="mid"></span>
+      <span class="w-6 h-px bg-ink transition-all duration-300" data-bar="bottom"></span>
+    </button>
+  </div>
+
+  <nav
+    id="mobile-nav"
+    aria-label={s.common.mobile}
+    class="md:hidden fixed inset-0 bg-bg/98 backdrop-blur-[18px] flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-opacity duration-300"
+  >
+    {
+      navLinks.map((link) => (
+        <a href={link.href} class="font-display text-2xl text-ink mobile-nav-link">
+          {link.label}
+        </a>
+      ))
+    }
+    <a
+      href={switchHref}
+      hreflang={other}
+      lang={other}
+      data-lang-switch={other}
+      class="mt-4 label-mono text-ink"
+    >
+      {other === 'fr' ? 'Français' : 'English'}
+    </a>
+  </nav>
+</header>
+
+<style>
+  #site-header.scrolled {
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-line);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+  }
+
+  #mobile-nav {
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0s linear 0.3s;
+  }
+  #mobile-nav.open {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transition: opacity 0.3s, visibility 0s;
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header');
+  const toggle = document.getElementById('mobile-nav-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  const bars = toggle?.querySelectorAll('[data-bar]');
+
+  const onScroll = () => {
+    if (!header) return;
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Remember the chosen language so the home page can open in it next time.
+  document.querySelectorAll<HTMLAnchorElement>('[data-lang-switch]').forEach((a) => {
+    a.addEventListener('click', () => {
+      try {
+        localStorage.setItem('lang', a.dataset.langSwitch || 'en');
+      } catch {}
+    });
+  });
+
+  const closeMenu = () => {
+    mobileNav?.classList.remove('open');
+    toggle?.setAttribute('aria-expanded', 'false');
+    if (bars) {
+      bars[0].removeAttribute('style');
+      (bars[1] as HTMLElement).style.opacity = '1';
+      bars[2].removeAttribute('style');
+    }
+  };
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = mobileNav?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(!!isOpen));
+    if (bars) {
+      if (isOpen) {
+        (bars[0] as HTMLElement).style.transform = 'translateY(6.5px) rotate(45deg)';
+        (bars[1] as HTMLElement).style.opacity = '0';
+        (bars[2] as HTMLElement).style.transform = 'translateY(-6.5px) rotate(-45deg)';
+      } else {
+        closeMenu();
+      }
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNav?.classList.contains('open')) {
+      closeMenu();
+      (toggle as HTMLElement | null)?.focus();
+    }
+  });
+
+  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+</script>

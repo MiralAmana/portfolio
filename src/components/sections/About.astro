@@ -1,0 +1,27 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import { t, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'en' } = Astro.props;
+const s = t(lang).about;
+---
+
+<section id="about" class="px-6 sm:px-10 py-28 lg:py-36 border-t border-line" aria-labelledby="about-title">
+  <div class="max-w-6xl mx-auto grid gap-14 lg:grid-cols-[1fr_1.4fr]">
+    <div>
+      <SectionHeading id="about-title" eyebrow={s.eyebrow} title={s.title} />
+      <ul class="mt-10 space-y-3 reveal" style="--rd: 0.15s">
+        {s.facts.map((f) => <li class="label-mono">{f}</li>)}
+      </ul>
+    </div>
+
+    <div class="space-y-6 font-display text-xl sm:text-2xl font-light leading-relaxed text-ink/90 reveal" style="--rd: 0.1s">
+      <p>{s.paragraphs[0]}</p>
+      <p class="text-muted">{s.paragraphs[1]}</p>
+      <p class="text-muted">{s.paragraphs[2]}</p>
+    </div>
+  </div>
+</section>

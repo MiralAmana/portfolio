@@ -1,0 +1,256 @@
+---
+import { t, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'en' } = Astro.props;
+const s = t(lang).hero;
+const name = 'CHARLIZE';
+const letters = name.split('');
+const tagline = s.tagline;
+---
+
+<section
+  id="hero"
+  aria-labelledby="hero-title"
+  class="relative min-h-screen flex items-center px-6 sm:px-10 pt-28 pb-16 overflow-hidden"
+>
+  <div
+    class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-6 items-center"
+  >
+    <!-- Text -->
+    <div class="order-2 lg:order-1">
+      <p class="label-mono hero-reveal" style="--d: 0.1s">
+        {
+          tagline.map((word, i) => (
+            <>
+              {word}
+              {i < tagline.length - 1 && <span class="text-accent mx-2">•</span>}
+            </>
+          ))
+        }
+      </p>
+
+      <h1
+        id="hero-title"
+        class="mt-6 font-display font-light leading-[0.9] text-ink whitespace-nowrap text-[clamp(2.6rem,12.5vw,6rem)] lg:text-[clamp(4rem,7.2vw,7rem)]"
+        aria-label={name}
+      >
+        {
+          letters.map((l, i) => (
+            <span
+              aria-hidden="true"
+              class="hero-letter inline-block"
+              style={`--d: ${0.25 + i * 0.05}s`}
+            >
+              {l}
+            </span>
+          ))
+        }
+      </h1>
+
+      <p
+        class="mt-8 max-w-md font-display italic text-xl sm:text-2xl leading-snug text-ink/85 hero-reveal"
+        style="--d: 0.85s"
+      >
+        {s.quote1}
+        <span class="text-muted">{s.quote2}</span>
+      </p>
+
+      <a
+        href="#mind"
+        class="mt-12 inline-flex items-center gap-3 label-mono hover:text-ink transition-colors duration-300 hero-reveal group"
+        style="--d: 1.05s"
+      >
+        <span class="block h-px w-10 bg-line group-hover:w-16 group-hover:bg-accent transition-all duration-500"></span>
+        {s.cta}
+      </a>
+    </div>
+
+    <!-- Photo stage -->
+    <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
+      <div
+        id="hero-stage"
+        class="relative w-full max-w-[420px] lg:max-w-[500px] aspect-[4/5] hero-reveal"
+        style="--d: 0.2s"
+      >
+        <!-- halo -->
+        <div
+          class="absolute inset-[-10%] rounded-full pointer-events-none"
+          style="background: radial-gradient(closest-side, rgba(165,180,252,0.16), transparent 70%);"
+          aria-hidden="true"
+        >
+        </div>
+
+        <!-- decorative motifs (parallax layers) -->
+        <svg
+          class="absolute inset-[-8%] w-[116%] h-[116%] pointer-events-none"
+          viewBox="0 0 600 720"
+          fill="none"
+          aria-hidden="true"
+        >
+          <g data-depth="0.5">
+            <g fill="#A5B4FC" opacity="0.35">
+              {
+                Array.from({ length: 5 }).flatMap((_, r) =>
+                  Array.from({ length: 5 }).map((_, c) => (
+                    <circle cx={470 + c * 20} cy={70 + r * 20} r="1.3" />
+                  ))
+                )
+              }
+            </g>
+            <circle cx="120" cy="150" r="70" stroke="#A5B4FC" stroke-opacity="0.14" />
+            <circle cx="120" cy="150" r="110" stroke="#A5B4FC" stroke-opacity="0.07" />
+          </g>
+
+          <g data-depth="1">
+            <!-- linear combination: v1, v2, v1+v2 -->
+            <g stroke="#A5B4FC" stroke-width="1" stroke-linecap="round" opacity="0.7">
+              <line x1="70" y1="640" x2="170" y2="560" />
+              <line x1="70" y1="640" x2="150" y2="655" />
+              <line x1="170" y1="560" x2="250" y2="575" stroke-dasharray="3 5" opacity="0.6" />
+              <line x1="150" y1="655" x2="250" y2="575" stroke-dasharray="3 5" opacity="0.6" />
+              <line x1="70" y1="640" x2="250" y2="575" opacity="0.9" />
+            </g>
+            <g fill="#A5B4FC">
+              <circle cx="70" cy="640" r="2.5" />
+              <circle cx="250" cy="575" r="2.5" />
+            </g>
+            <g font-family="'IBM Plex Mono', monospace" font-size="11" fill="#93939C">
+              <text x="112" y="585">v₁</text>
+              <text x="98" y="675">v₂</text>
+              <text x="258" y="570">v₁ + v₂</text>
+            </g>
+          </g>
+
+          <g data-depth="1.6">
+            <g fill="#F4F3F1" opacity="0.5">
+              <circle cx="540" cy="330" r="2" />
+              <circle cx="30" cy="330" r="1.6" />
+              <circle cx="500" cy="600" r="2.2" />
+              <circle cx="300" cy="30" r="1.6" />
+            </g>
+            <text
+              x="480"
+              y="360"
+              font-family="'IBM Plex Mono', monospace"
+              font-size="10"
+              fill="#93939C"
+              opacity="0.8">(x, y) ∈ ℝ²</text
+            >
+          </g>
+        </svg>
+
+        <!-- glass panel behind the portrait -->
+        <div
+          class="absolute bottom-0 left-[7%] w-[86%] h-[74%] rounded-[2rem] glass overflow-hidden"
+          aria-hidden="true"
+        >
+          <div
+            class="absolute inset-0"
+            style="background: linear-gradient(160deg, rgba(255,255,255,0.10), rgba(255,255,255,0) 40%);"
+          >
+          </div>
+        </div>
+
+        <!-- portrait (head overlaps the panel for depth) -->
+        <img
+          id="hero-photo"
+          src="/images/charlize.webp"
+          alt={s.photoAlt}
+          width="800"
+          height="800"
+          fetchpriority="high"
+          decoding="async"
+          class="absolute bottom-0 left-0 w-full h-auto select-none"
+          style="mask-image: linear-gradient(to bottom, #000 76%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, #000 76%, transparent 100%);"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-3 hero-reveal"
+    style="--d: 1.3s"
+    aria-hidden="true"
+  >
+    <span class="label-mono">{s.scroll}</span>
+    <span class="block w-px h-10 bg-gradient-to-b from-muted to-transparent"></span>
+  </div>
+</section>
+
+<style>
+  .hero-reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: hero-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) forwards;
+  }
+
+  .hero-letter {
+    opacity: 0;
+    transform: translateY(0.35em);
+    animation: hero-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) forwards;
+  }
+
+  @keyframes hero-in {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  #hero-stage svg g[data-depth] {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+</style>
+
+<script>
+  // Light parallax: pointer on fine pointers, scroll everywhere. Skipped under reduced motion.
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
+  const stage = document.getElementById('hero-stage');
+  const photo = document.getElementById('hero-photo');
+
+  if (!reduce && stage && photo) {
+    const layers = Array.from(stage.querySelectorAll<SVGGElement>('g[data-depth]'));
+    let mx = 0;
+    let my = 0;
+    let sy = 0;
+    let raf = 0;
+
+    const render = () => {
+      raf = 0;
+      const scrollShift = Math.min(sy, 600) * -0.03;
+      layers.forEach((g) => {
+        const d = parseFloat(g.dataset.depth || '1');
+        g.style.transform = `translate3d(${mx * 8 * d}px, ${my * 8 * d + scrollShift * d}px, 0)`;
+      });
+      photo.style.transform = `translate3d(${mx * -5}px, ${my * -3 + scrollShift * 0.4}px, 0)`;
+    };
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(render);
+    };
+
+    if (finePointer) {
+      window.addEventListener(
+        'pointermove',
+        (e) => {
+          mx = (e.clientX / window.innerWidth - 0.5) * 2;
+          my = (e.clientY / window.innerHeight - 0.5) * 2;
+          schedule();
+        },
+        { passive: true }
+      );
+    }
+    window.addEventListener(
+      'scroll',
+      () => {
+        sy = window.scrollY;
+        schedule();
+      },
+      { passive: true }
+    );
+  }
+</script>
