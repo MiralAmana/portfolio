@@ -126,13 +126,13 @@ export default function VectorLab({ labels }: { labels: VectorLabels }) {
 
   return (
     <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] items-start">
-      <div ref={wrapRef} className="w-full">
+      <div ref={wrapRef} className="w-full min-w-0">
         <svg
           ref={svgRef}
           viewBox={`0 0 ${size} ${size}`}
           width={size}
           height={size}
-          className="block mx-auto touch-none select-none rounded-2xl border border-line bg-[rgba(255,255,255,0.02)]"
+          className="block mx-auto w-full max-w-[520px] h-auto touch-none select-none rounded-2xl border border-line bg-[rgba(255,255,255,0.02)]"
           onPointerMove={onMove}
           onPointerUp={endDrag}
           onPointerLeave={endDrag}

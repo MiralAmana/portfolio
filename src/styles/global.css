@@ -101,3 +101,26 @@ html:has(dialog[open]) {
     scroll-behavior: auto !important;
   }
 }
+
+/* Never let a stray element create a sideways scroll on phones. */
+html, body {
+  overflow-x: clip;
+}
+
+/* Touch devices: comfortable tap targets (>= 44px) for text links, buttons and sliders. */
+@media (pointer: coarse) {
+  a.label-mono,
+  #contact li a,
+  .project-dialog a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  input[type='range'] {
+    height: 44px;
+    touch-action: pan-y;
+  }
+  button.rounded-full {
+    min-height: 44px;
+  }
+}
