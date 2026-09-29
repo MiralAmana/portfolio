@@ -2,11 +2,11 @@
 
 @theme {
   --color-bg: #050506;
-  --color-surface: rgba(255, 255, 255, 0.04);
+  --color-surface: rgba(255, 255, 255, 0.055);
   --color-ink: #f4f3f1;
-  --color-muted: #93939c;
+  --color-muted: #a8a8b3;
   --color-accent: #a5b4fc;
-  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line: rgba(255, 255, 255, 0.11);
 
   --font-display: "Fraunces", serif;
   --font-sans: "Inter", -apple-system, sans-serif;
@@ -27,6 +27,10 @@
 
   body {
     background-color: var(--color-bg);
+    background-image:
+      radial-gradient(900px 560px at 18% 0%, rgba(255, 255, 255, 0.05), transparent 60%),
+      radial-gradient(700px 500px at 100% 38%, rgba(255, 255, 255, 0.035), transparent 65%);
+    background-attachment: fixed;
     color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
