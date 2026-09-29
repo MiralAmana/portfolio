@@ -76,6 +76,11 @@ html:has(dialog[open]) {
   overflow: hidden;
 }
 
+/* Keep an anchor-jump target's heading clear of the fixed header. */
+section[id] {
+  scroll-margin-top: 96px;
+}
+
 /* Scroll reveal: content stays visible without JS; the .js class is set in <head>. */
 .js .reveal {
   opacity: 0;

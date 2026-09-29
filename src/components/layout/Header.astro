@@ -90,6 +90,14 @@ const navLinks = [
 </header>
 
 <style>
+  /* Always blurred so page content can never sit crisp and legible behind the fixed
+     header (short viewports, anchor jumps landing right under it). Fully transparent
+     over the hero looked elegant but let text bleed through unblurred underneath. */
+  #site-header {
+    background-color: color-mix(in srgb, var(--color-bg) 35%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+  }
   #site-header.scrolled {
     background-color: var(--color-surface);
     border-bottom: 1px solid var(--color-line);
