@@ -58,14 +58,23 @@ const tagline = s.tagline;
         <span class="text-muted">{s.quote2}</span>
       </p>
 
-      <a
-        href="#building"
-        class="mt-12 inline-flex items-center gap-3 label-mono hover:text-ink transition-colors duration-300 hero-reveal group"
-        style="--d: 1.05s"
-      >
-        <span class="block h-px w-10 bg-line group-hover:w-16 group-hover:bg-accent transition-all duration-500"></span>
-        {s.cta}
-      </a>
+      <div class="mt-12 flex flex-wrap items-center gap-x-10 gap-y-5 hero-reveal" style="--d: 1.05s">
+        <a
+          href="#building"
+          class="inline-flex items-center gap-3 label-mono hover:text-ink transition-colors duration-300 group"
+        >
+          <span class="block h-px w-10 bg-line group-hover:w-16 group-hover:bg-accent transition-all duration-500"></span>
+          {s.cta}
+        </a>
+
+        <a
+          href={s.resumeHref}
+          download
+          class="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 label-mono text-ink transition-colors duration-300 hover:border-white/30 hover:text-ink"
+        >
+          {s.resume}
+        </a>
+      </div>
     </div>
 
     <!-- Photo stage -->

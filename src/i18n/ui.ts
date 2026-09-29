@@ -30,6 +30,8 @@ const en = {
     quote1: 'I build software, data and AI solutions.',
     quote2: ' From the problem to the working product.',
     cta: 'See my work',
+    resume: 'Download my CV',
+    resumeHref: '/cv/CV_Charlize_Amana_EN.pdf',
     scroll: 'Scroll',
     photoAlt: 'Portrait of Charlize'
   },
@@ -131,6 +133,8 @@ const fr: typeof en = {
     quote1: 'Je construis des solutions logicielles, data et IA.',
     quote2: ' Du problème au produit fonctionnel.',
     cta: 'Voir mes réalisations',
+    resume: 'Télécharger mon CV',
+    resumeHref: '/cv/CV_Charlize_Amana_FR.pdf',
     scroll: 'Défiler',
     photoAlt: 'Portrait de Charlize'
   },
